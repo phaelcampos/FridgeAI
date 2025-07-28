@@ -30,7 +30,7 @@ public class FoodItemController {
         return ResponseEntity.ok().body(foodItems);
     }
 
-    @GetMapping("{id")
+    @GetMapping("{id}")
     public ResponseEntity<Optional<FoodItem>> getFoodItemById(@PathVariable Long id){
         Optional<FoodItem> foodItem = foodItemService.findById(id);
         if(foodItem.isEmpty()){
@@ -39,13 +39,13 @@ public class FoodItemController {
         return ResponseEntity.status(HttpStatus.OK).body(foodItem);
     }
 
-    @DeleteMapping("{id")
-    public ResponseEntity<Void> deleteFoodItemById(@RequestParam Long id){
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteFoodItemById(@PathVariable Long id){
         foodItemService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("{id")
+    @PutMapping("{id}")
     public ResponseEntity<String> updateFoodItemById(@RequestBody FoodItem foodItem,  @PathVariable Long id){
         FoodItem food = foodItemService.update(foodItem, id);
         return ResponseEntity.ok().body(food.getName());
